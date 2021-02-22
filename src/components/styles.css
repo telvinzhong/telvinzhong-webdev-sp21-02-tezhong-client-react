@@ -1,0 +1,17 @@
+.btn {
+padding: 0;
+border: none;
+outline: none;
+background: none;
+}
+
+.button {
+padding: 0;
+border: none;
+outline: none;
+background: none;
+}
+
+.fa-plus-circle {
+    color: red;
+}
