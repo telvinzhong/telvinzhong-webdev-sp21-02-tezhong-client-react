@@ -4,6 +4,7 @@ import CourseGrid from "./course-grid";
 import CourseEditor from "./course-editor";
 import {Link, Route} from "react-router-dom";
 import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
+import "./styles.css";
 
 class CourseManager extends React.Component {
   state = {
@@ -31,10 +32,6 @@ class CourseManager extends React.Component {
   }
 
   componentDidMount = () =>
-    // findAllCourses()
-    //     .then(actualCourses => this.setState({
-    //       courses: actualCourses
-    //     }))
     findAllCourses()
         .then(courses => this.setState({courses}))
 
@@ -44,6 +41,7 @@ class CourseManager extends React.Component {
       owner: "New Owner",
       lastModified: "Never"
     }
+
     courseService.createCourse(newCourse)
         .then(course => this.setState(
             (prevState) => ({
@@ -54,33 +52,11 @@ class CourseManager extends React.Component {
               ]
             })))
 
-    // this.state.courses.push(newCourse)
-    // this.setState(this.state)
   }
 
   deleteCourse = (courseToDelete) => {
     courseService.deleteCourse(courseToDelete._id)
         .then(status => {
-          // const newCourses = this.state.courses
-          //     .filter(course => course !== courseToDelete)
-          // this.setState({
-          //   courses: newCourses
-          // })
-          // this.setState((prevState) => {
-          //   // let nextState = {...prevState}
-          //   // nextState.courses =
-          //   //     prevState
-          //   //         .courses
-          //   //         .filter(course => course !== courseToDelete)
-          //
-          //   let nextState = {
-          //     ...prevState,
-          //     courses: prevState.courses.filter
-          //               (course => course !== courseToDelete)
-          //   }
-          //
-          //   return nextState
-          // })
 
           this.setState((prevState) => ({
               ...prevState,
@@ -92,12 +68,28 @@ class CourseManager extends React.Component {
 
   render() {
     return(
-      <div>
-          <Link to="/">
-            <i className="fas fa-2x fa-home float-right"></i>
-          </Link>
-        <h1>Course Manager</h1>
-        <button onClick={this.addCourse}>Add Course</button>
+      <div className = "container-fluid">
+
+          <div className="row">
+              <div className="col-1">
+                  <h3 className="title">
+                      <i className="fas fa-bars"/>
+                  </h3>
+              </div>
+
+              <div className="col-9">
+                  <input className="form-control" placeholder="New Course Title"/>
+              </div>
+
+              <div className="col-2">
+                  <button className="plus-button float-right" onClick={this.addCourse}>
+                      <i className="fas fa-plus-circle fa-2x plus-icon"/>
+                  </button>
+              </div>
+
+          </div>
+
+
         <Route path="/courses/table">
           <CourseTable
               updateCourse={this.updateCourse}
@@ -109,17 +101,17 @@ class CourseManager extends React.Component {
               deleteCourse={this.deleteCourse}
               courses={this.state.courses}/>
         </Route>
-          {/*<Route path="/courses/editor">*/}
-          {/*    <CourseEditor/>*/}
-          {/*</Route>*/}
-          {/*<Route path="/courses/editor"*/}
-          {/*       render={(props) => <CourseEditor props={props}/>}>*/}
-          {/*</Route>*/}
+
           <Route path="/courses/editor"
                  render={(props) => <CourseEditor {...props}/>}>
           </Route>
+
+        <button className="plus-button float-right" onClick={this.addCourse}>
+            <i className="fas fa-plus-circle fa-4x plus-icon"/>
+        </button>
       </div>
     )
+
   }
 }
 
