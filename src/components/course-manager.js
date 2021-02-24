@@ -1,16 +1,15 @@
 import React from 'react'
-import CourseTable from "./course-table";
-import CourseGrid from "./course-grid";
-import CourseEditor from "./course-editor";
+import CourseTable from "./course-table/course-table";
+import CourseGrid from "./course-grid/course-grid";
+import CourseEditor from "./course-editor/course-editor";
 import {Link, Route} from "react-router-dom";
-import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
+import courseService, {findAllCourses, deleteCourse, updateCourse} from "../services/course-service";
 import "./styles.css";
 
 class CourseManager extends React.Component {
   state = {
     courses: [],
-    qwe: 123,
-    sdf: 456
+    courseTitle: "New Course"
   }
 
   updateCourse = (course) => {
@@ -20,14 +19,6 @@ class CourseManager extends React.Component {
           ...prevState,
           courses: prevState.courses.map(
               (c) => c._id === course._id ? course : c)
-
-          // courses: prevState.courses.map(c => {
-          //   if(c._id === course._id) {
-          //     return course
-          //   } else {
-          //     return c
-          //   }
-          // })
         })))
   }
 
@@ -99,6 +90,7 @@ class CourseManager extends React.Component {
         <Route path="/courses/grid">
           <CourseGrid
               deleteCourse={this.deleteCourse}
+              updateCourse={this.updateCourse}
               courses={this.state.courses}/>
         </Route>
 

@@ -14,14 +14,15 @@ export default class CourseTable
     return(
 
       <div>
-          <Link to="/courses/grid">
-            <i className="fas fa-2x fa-th float-right"> </i>
-          </Link>
-
-           <i className="fas fa-2x fa-sort float-right"> </i>
-
-            <i className="fas fa-2x fa-folder float-right"> </i>
-        <h2>Course Table</h2>
+       <div className="col">
+           <div className="float-right">
+               <i className="fas fa-2x fa-folder btn"></i>
+               <i className="fas fa-2x fa-sort-alpha-up btn"></i>
+               <Link to="/courses/grid">
+                   <i className="fas fa-2x fa-list btn"></i>
+               </Link>
+           </div>
+       </div>
 
         <table className="table">
             <thead>
@@ -37,7 +38,7 @@ export default class CourseTable
           {
             this.props.courses.map((course, ndx) =>
               <CourseRow
-                  updateCourse={this.props.updateCourse}
+                updateCourse={this.props.updateCourse}
                 deleteCourse={this.props.deleteCourse}
                 key={ndx}
                 course={course}
