@@ -12,6 +12,16 @@ class CourseManager extends React.Component {
     courseTitle: "New Course"
   }
 
+  componentDidMount = () =>
+        courseService.findAllCourses()
+            .then(courses => this.setState({courses}))
+
+  changeValue = (value) => {
+      this.setState({
+          courseTitle: value
+      })
+  }
+
   updateCourse = (course) => {
     console.log(course)
     courseService.updateCourse(course._id, course)
@@ -57,54 +67,96 @@ class CourseManager extends React.Component {
         })
   }
 
-  render() {
-    return(
-      <div className = "container-fluid">
+ render() {
+         return (
+             <div>
+                 <div className="top-cell">
 
-          <div className="row">
-              <div className="col-1">
-                  <h3 className="title">
-                      <i className="fas fa-bars"/>
-                  </h3>
-              </div>
+                     {/*<button onClick={this.addCourse}>Add Course</button>*/}
+                     {/*show course table only if the url is in /courses/table */}
+                     <Route path="/courses/table">
+                         <nav className="navbar navbar-expand-lg wbdv-sticky-nav-bar">
+                             <div className="container-fluid">
+                                 <div className="col-1">
+                                     <i className="fas fa-bars fa-2x float-left btn"></i>
+                                 </div>
+                                 <div className="col-2">
+                                     <a className="navbar-brand priority-3">Course Manager</a>
+                                 </div>
+                                 <div className="col-8">
+                                     <input className="form-control" type="search" placeholder="New Course Title"
+                                            aria-label="Search" id="new-course-title"
+                                            value={this.state.courseTitle}
+                                            onChange={e => this.changeValue(e.target.value)}
 
-              <div className="col-9">
-                  <input className="form-control" placeholder="New Course Title"/>
-              </div>
+                                     />
+                                 </div>
+                                 <div onClick={this.addCourse}
+                                      className="col-1">
+                                     <i className="fas fa-plus-circle fa-2x btn" id="plus-circle"></i>
+                                 </div>
+                             </div>
+                         </nav>
 
-              <div className="col-2">
-                  <button className="plus-button float-right" onClick={this.addCourse}>
-                      <i className="fas fa-plus-circle fa-2x plus-icon"/>
-                  </button>
-              </div>
+                         <CourseTable
+                             deleteCourse={this.deleteCourse}
+                             updateCourse={this.updateCourse}
+                             courses={this.state.courses}/>
 
-          </div>
+                         <div onClick={this.addCourse} className="sticky-icon float-right">
+                             <i className="btn fas fa-plus-circle fa-4x" id="bottom-plus-circle"></i>
+                         </div>
+                     </Route>
+                     <Route path="/courses/grid">
+                         <nav className="navbar navbar-expand-lg wbdv-sticky-nav-bar">
+                             <div className="container-fluid">
+                                 <div className="col-1">
+                                     <i className="fas fa-bars fa-2x float-left btn"></i>
+                                 </div>
+                                 <div className="col-2">
+                                     <a className="navbar-brand priority-3">Course Manager</a>
+                                 </div>
+                                 <div className="col-8">
+                                     <input className="form-control" type="search" placeholder="New Course Title"
+                                            aria-label="Search" id="new-course-title"
+                                            value={this.state.courseTitle}
+                                            onChange={e => this.changeValue(e.target.value)}
+
+                                     />
+                                 </div>
+                                 <div onClick={this.addCourse}
+                                      className="col-1">
+                                     <i className="fas fa-plus-circle fa-2x btn" id="plus-circle"></i>
+                                 </div>
+                             </div>
+                         </nav>
+
+                         <CourseGrid
+                             deleteCourse={this.deleteCourse}
+                             updateCourse={this.updateCourse}
+                             courses={this.state.courses}/>
+
+                         <div onClick={this.addCourse} className="sticky-icon float-right">
+                             <i className="btn fas fa-plus-circle fa-4x" id="bottom-plus-circle"></i>
+                         </div>
+                     </Route>
+                     {/*courseId is a placeholder since after : , it will be replaced by the real course Id*/}
+                     <Route path={[
+                         "/courses/editor/:courseId/",
+                         "/courses/editor/:courseId/:moduleId",
+                         "/courses/editor/:courseId/:moduleId/:lessonId",
+                         "/courses/editor/:courseId/:moduleId/:lessonId/:topicId"]}
+                            exact={true}
+                            render={(props) =>
+                                <CourseEditor
+                                    {...props}/>
+                            }>
+                     </Route>
+                 </div>
+             </div>
+         )
+     }
+ }
 
 
-        <Route path="/courses/table">
-          <CourseTable
-              updateCourse={this.updateCourse}
-              deleteCourse={this.deleteCourse}
-              courses={this.state.courses}/>
-        </Route>
-        <Route path="/courses/grid">
-          <CourseGrid
-              deleteCourse={this.deleteCourse}
-              updateCourse={this.updateCourse}
-              courses={this.state.courses}/>
-        </Route>
-
-          <Route path="/courses/editor"
-                 render={(props) => <CourseEditor {...props}/>}>
-          </Route>
-
-        <button className="plus-button float-right" onClick={this.addCourse}>
-            <i className="fas fa-plus-circle fa-4x plus-icon"/>
-        </button>
-      </div>
-    )
-
-  }
-}
-
-export default CourseManager
+ export default CourseManager

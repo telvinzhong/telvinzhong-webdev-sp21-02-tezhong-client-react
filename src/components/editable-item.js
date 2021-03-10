@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 
 const EditableItem = (
     {
-        to="/somewhere/to/go",
-        item= {title: "Some Title", _id:"ABC"},
+        to="/a/b/c",
+        item= {title: "title here", _id:"ABC"},
         deleteItem,
         updateItem,
         active
