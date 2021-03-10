@@ -1,5 +1,21 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import moduleReducer from '../../reducers/modules-reducer'
+import {combineReducers, createStore} from "redux";
+import {Provider} from "react-redux";
+import ModuleList from "./module-list";
+import LessonTabs from "./lesson-tabs";
+import lessonReducer from "../../reducers/lesson-reducer";
+import TopicPill from "./topic-pills";
+import topicReducer from "../../reducers/topic-reducer";
+
+const reducer = combineReducers({
+    moduleReducer: moduleReducer,
+    lessonReducer: lessonReducer,
+    topicReducer: topicReducer
+})
+
+const store = createStore(reducer);
 
 const CourseEditor = ({history}) =>
  <div>
