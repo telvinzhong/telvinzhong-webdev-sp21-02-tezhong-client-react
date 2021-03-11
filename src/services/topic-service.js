@@ -15,6 +15,9 @@ export const findTopicsForLesson = (lessonId) =>
     fetch(`${LESSONS_URL}/${lessonId}/topics`)
         .then(response => response.json())
 
+export const findTopic = (topicId) => {
+}
+
 export const updateTopic = (topicId, topic) =>
     fetch(`${TOPICS_URL}/${topicId}`, {
         method: "PUT",

@@ -5,32 +5,38 @@ export const findLessonsForModule = (moduleId) =>
     fetch(`${MODULES_URL}/${moduleId}/lessons`)
         .then(response => response.json())
 
-export const createLessonForModule = (moduleId, lesson) =>
-    fetch(`${MODULES_URL}/${moduleId}/lessons`,{
-        method: "POST",
-        body: JSON.stringify(lesson),
-        headers:{
-            'content-type': 'application/json'
-        }
-    }).then(response => response.json())
+export const findLesson = (lessonId) => {
+}
 
-export const deleteLesson = (lessonId) =>
-    fetch(`${LESSON_URL}/${lessonId}`,{
-        method: "DELETE"
-    }).then(response => response.json())
+export const createLessonForModule = (moduleId, lesson) =>
+    fetch(`${MODULES_URL}/${moduleId}/lessons`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(lesson)
+    })
+        .then(response => response.json())
 
 export const updateLesson = (lessonId, lesson) =>
-    fetch(`${LESSON_URL}/${lessonId}`,{
+    fetch(`${LESSONS_URL}/${lessonId}`, {
         method: "PUT",
-        body: JSON.stringify(lesson),
-        headers:{
+        headers: {
             'content-type': 'application/json'
-        }
-    }).then(response => response.json())
+        },
+        body: JSON.stringify(lesson)
+    })
+        .then(response => response.json())
+
+export const deleteLesson = (lessonId) =>
+    fetch(`${LESSONS_URL}/${lessonId}`, {
+        method: "DELETE"
+    })
+        .then(response => response.json())
 
 export default {
     findLessonsForModule,
     createLessonForModule,
-    deleteLesson,
-    updateLesson
+    updateLesson,
+    deleteLesson
 }
