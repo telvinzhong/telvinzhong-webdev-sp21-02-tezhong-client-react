@@ -72,18 +72,16 @@ class CourseManager extends React.Component {
              <div>
                  <div className="top-cell">
 
-                     {/*<button onClick={this.addCourse}>Add Course</button>*/}
-                     {/*show course table only if the url is in /courses/table */}
                      <Route path="/courses/table">
                          <nav className="navbar navbar-expand-lg wbdv-sticky-nav-bar">
                              <div className="container-fluid">
                                  <div className="col-1">
                                      <i className="fas fa-bars fa-2x float-left btn"></i>
                                  </div>
-                                 <div className="col-2">
+                                 <div className="col-1">
                                      <a className="navbar-brand priority-3">Course Manager</a>
                                  </div>
-                                 <div className="col-8">
+                                 <div className="col-9">
                                      <input className="form-control" type="search" placeholder="New Course Title"
                                             aria-label="Search" id="new-course-title"
                                             value={this.state.courseTitle}
@@ -113,10 +111,10 @@ class CourseManager extends React.Component {
                                  <div className="col-1">
                                      <i className="fas fa-bars fa-2x float-left btn"></i>
                                  </div>
-                                 <div className="col-2">
+                                 <div className="col-1">
                                      <a className="navbar-brand priority-3">Course Manager</a>
                                  </div>
-                                 <div className="col-8">
+                                 <div className="col-9">
                                      <input className="form-control" type="search" placeholder="New Course Title"
                                             aria-label="Search" id="new-course-title"
                                             value={this.state.courseTitle}
@@ -140,7 +138,6 @@ class CourseManager extends React.Component {
                              <i className="btn fas fa-plus-circle fa-4x" id="bottom-plus-circle"></i>
                          </div>
                      </Route>
-                     {/*courseId is a placeholder since after : , it will be replaced by the real course Id*/}
                      <Route path={[
                          "/courses/editor/:courseId/",
                          "/courses/editor/:courseId/:moduleId",
