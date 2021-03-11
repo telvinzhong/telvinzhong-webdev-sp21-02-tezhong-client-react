@@ -5,33 +5,42 @@ const initialState = {
 const topicReducer = (state = initialState, action) => {
     switch (action.type) {
         case "CREATE_TOPIC":
-            const newState = {
+            return {
+                ...state,
                 topics: [
                     ...state.topics,
-                    {
-                        title: "New Topic",
-                        _id: (new Date()).getTime()
-                    }
+                    action.topic
                 ]
             }
-            return newState
-        case "DELETE_TOPIC":
-            const newState1 = {
-                topics: state.topics.filter(topic => topic._id !== action.item._id)
+        case "FIND_TOPICS_FOR_LESSON":
+            return {
+                ...state,
+                topics: action.topics
             }
-            return newState1
         case "UPDATE_TOPIC":
             return {
                 topics: state.topics.map(topic => {
-                    if(topic._id === action.topic._id) {
-                        return action.topic
+                    if (topic._id === action.topicToUpdate._id) {
+                        return action.topicToUpdate
+                    } else {
+                        return topic
                     }
-                    return topic
                 })
             }
+        case "DELETE_TOPIC":
+            return {
+                topics: state.topics.filter(topic => {
+                    if (topic._id === action.topicToDelete._id) {
+                        return false
+                    } else {
+                        return true
+                    }
+                })
+            }
+        case "FIND_TOPIC":
         default:
             return state
     }
 }
 
-export default topicReducer;
+export default topicReducer

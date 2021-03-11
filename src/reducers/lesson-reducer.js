@@ -12,7 +12,6 @@ const lessonReducer = (state = initialState, action) => {
                     action.lesson
                 ]
             }
-
         case "FIND_LESSONS":
             return {
                 ...state,
@@ -28,7 +27,6 @@ const lessonReducer = (state = initialState, action) => {
                     }
                 })
             }
-
         case "DELETE_LESSON":
             return {
                 lessons: state.lessons.filter(lesson => {
