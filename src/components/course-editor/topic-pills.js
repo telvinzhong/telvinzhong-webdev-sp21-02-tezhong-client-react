@@ -18,11 +18,12 @@ const TopicPills = ({
     }, [lessonId])
 
     return (
-        <div>
-            <ul className="nav nav-pills ss-topics-nav">
-                {
-                    topics.map(topic =>
-                        <li className="nav-item ss-topics-nav-item"
+    <div>
+        <h2>Topics</h2>
+        <ul className="nav nav-pills nav-cell">
+            {
+                topics.map(topic =>
+                    <li className="nav-item"
                             key={topic._id}>
                             <EditableItem
                                 key={topic._id}
@@ -32,21 +33,14 @@ const TopicPills = ({
                                 deleteItem={deleteTopic}
                                 active={topic._id === topicId}/>
                         </li>
-                    )
-                }
+                )
+            }
+            <li className="nav-item">
+                <i onClick={() => createTopic(lessonId)} className="nav-link fas fa-plus plus btn btn-sm" id="plus-topic"></i>
+            </li>
 
-                {
-                    lessonId !== undefined &&
-                    <li className="nav-item ss-topics-nav-item">
-                        <a className="nav-link ss-link" href="#" tabIndex="-1">
-                            <i onClick={() => createTopic(lessonId)}
-                               className="fas fa-plus fa-lg ss-plus-icon"/>
-                        </a>
-                    </li>
-                }
-            </ul>
-        </div>
-    )
+        </ul>
+    </div>)
 }
 
 const stpm = (state) => {

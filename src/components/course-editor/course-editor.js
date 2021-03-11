@@ -18,16 +18,13 @@ const reducer = combineReducers({
 
 const store = createStore(reducer);
 
-const CourseEditor = ({props}) => {
-    const {layout, courseId} = useParams();
-
-    const [courseTitle, setCourseTitle] = useState('');
-    const getTitle = (courseId) => {
+const CourseEditor = ({history}) => {
+    const {courseId, layout} = useParams();
+    const [title, setNewTitle] = useState('')
+    useEffect(() => {
         courseService.findCourseByID(courseId)
-            .then(course => setCourseTitle(course.title));
-    }
-
-    useEffect(() => getTitle(courseId));
+            .then(course => setNewTitle(course.title))
+    }, [])
 
     return (
         <Provider store={store}>

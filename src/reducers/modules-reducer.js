@@ -31,20 +31,20 @@ const moduleReducer = (state = initialState, action) => {
                 })
             }
 
-        case "UPDATE_MODULE":
-            return {
-                modules: state.modules.map(module => {
-                    if (module._id === action.moduleToUpdate._id) {
-                        return action.moduleToUpdate
-                    } else {
-                        return module
-                    }
-                })
-            }
-        case "FIND_MODULE":
-            return state
-        default:
-            return state
+       case "UPDATE_MODULE":
+                return {
+                    modules: state.modules.map(module => {
+                        if (module._id === action.moduleToUpdate._id) {
+                            return action.moduleToUpdate
+                        } else {
+                            return module
+                        }
+                    })
+                }
+            case "FIND_MODULE":
+                return state
+            default:
+                return state
 
     }
 }

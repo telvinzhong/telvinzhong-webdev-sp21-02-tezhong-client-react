@@ -60,22 +60,24 @@ const dtpm = (dispatch) => {
                     type: "DELETE_MODULE",
                     moduleToDelete: item
                 }))
+
         },
-        updateModule: (module) => {
-            moduleService.updateModule(module._id, module)
+        updateModule: (item) => {
+            moduleService.updateModule(item._id, item)
                 .then(status => dispatch({
-                    type:"UPDATE_MODULE",
-                    module: module
+                    type: "UPDATE_MODULE",
+                    moduleToUpdate: item
                 }))
+
         },
         findModulesForCourse: (courseId) => {
             moduleService.findModulesForCourse(courseId)
-                .then(theModule => dispatch({
+                .then(theModules => dispatch({
                     type: "FIND_MODULES_FOR_COURSE",
-                    modules: theModule
+                    modules: theModules
                 }))
         }
     }
 }
 
-export default connect(stpm, dtpm)(ModuleList);
+export default connect(stpm, dtpm)(ModuleList)
