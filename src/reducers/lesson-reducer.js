@@ -4,38 +4,34 @@ const initialState = {
 
 const lessonReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "CREATE_LESSON":
+        case "FIND_LESSONS_FOR_MODULE":
             return {
-                ...state,
+                ...action,
+                lessons: action.lessons
+            }
+
+        case "CREATE_LESSON":
+            // alert("create lesson ")
+            const newState = {
                 lessons: [
                     ...state.lessons,
                     action.lesson
                 ]
             }
-
-        case "FIND_LESSONS":
-            return {
-                ...state,
-                lessons: action.lessons
+            return newState
+        case "DELETE_LESSON":
+            alert("Removing lesson " + action.lessonToDelete.title)
+            const newState1 = {
+                lessons: state.lessons.filter(lesson => lesson._id !== action.lessonToDelete._id)
             }
+            return newState1
         case "UPDATE_LESSON":
             return {
                 lessons: state.lessons.map(lesson => {
-                    if (lesson._id === action.lessonToBeUpdated._id) {
-                        return action.lessonToBeUpdated
+                    if(lesson._id === action.lesson._id) {
+                        return action.lesson
                     } else {
                         return lesson
-                    }
-                })
-            }
-
-        case "DELETE_LESSON":
-            return {
-                lessons: state.lessons.filter(lesson => {
-                    if (lesson._id === action.lessonToDelete._id) {
-                        return false
-                    } else {
-                        return true
                     }
                 })
             }
@@ -44,4 +40,4 @@ const lessonReducer = (state = initialState, action) => {
     }
 }
 
-export default lessonReducer
+export default lessonReducer;

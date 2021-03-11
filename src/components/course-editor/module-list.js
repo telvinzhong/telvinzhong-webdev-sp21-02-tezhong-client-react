@@ -23,12 +23,10 @@ const ModuleList = (
                 {
                     myModules.map(module =>
                         <li className={`list-group-item ${module._id === moduleId? 'active' : ''} list-group-item-action list-group-item-light`}>
-                            {/*<a href="#">{module.title}</a>*/}
                             <EditableItem
                                 to={`/courses/editor/${courseId}/${module._id}`}
                                 updateItem={updateModule}
                                 deleteItem={deleteModule}
-                                // active={module._id === moduleId}
                                 item={module}/>
                         </li>
                     )
@@ -41,14 +39,12 @@ const ModuleList = (
     )
 }
 
-//read data from reducer
 const stpm = (state) =>{
     return {
         myModules: state.moduleReducer.modules
     }
 }
 
-//send data to the reducer
 const dtpm = (dispatch) => {
     return {
         createModule: (courseId) => {

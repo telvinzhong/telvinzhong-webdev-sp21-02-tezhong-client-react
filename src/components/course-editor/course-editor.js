@@ -17,7 +17,6 @@ const reducer = combineReducers({
 
 const store = createStore(reducer);
 
-// const CourseEditor = ({props}) =>
 const CourseEditor = ({history}) => {
     const {layout} = useParams();
     return (
