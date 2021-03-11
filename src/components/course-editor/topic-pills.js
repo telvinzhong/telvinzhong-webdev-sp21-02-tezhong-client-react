@@ -35,13 +35,15 @@ const TopicPills = ({
                         </li>
                 )
             }
-            <li className="nav-item">
+
+               <li className="nav-item">
                 <i onClick={() => createTopic(lessonId)} className="nav-link fas fa-plus plus btn btn-sm" id="plus-topic"></i>
             </li>
 
         </ul>
     </div>)
 }
+
 
 const stpm = (state) => {
     return {
