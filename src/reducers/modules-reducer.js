@@ -1,52 +1,51 @@
+import {FIND_MODULES_FOR_COURSE, CREATE_MODULE, DELETE_MODULE, UPDATE_MODULE} from "../actions/module-actions";
+
 const initialState = {
     modules: []
 }
 
-
 const moduleReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "FIND_MODULES_FOR_COURSE":
-            return {
-                ...state,
-                modules: action.modules
-            }
-
-        case "CREATE_MODULE":
-            return {
-                ...state,
+        case CREATE_MODULE:
+            const newState = {
                 modules: [
                     ...state.modules,
                     action.module
                 ]
             }
+            return newState
 
-        case "DELETE_MODULE":
+        case FIND_MODULES_FOR_COURSE:
             return {
-                modules: state.modules.filter(module => {
-                    if (module._id === action.moduleToDelete._id) {
-                        return false;
+                ...state,
+                modules: action.modules
+            }
+
+        case DELETE_MODULE:
+            const newState = {
+                modules: state.modules.filter(module => module._id !== action.moduleToDelete._id
+                )
+            }
+            return newState
+
+        case UPDATE_MODULE:
+            return {
+                ...state,
+                modules: state.modules.map(m => {
+                    if(m._id === action.updateModule._id) {
+                        return action.updateModule
                     } else {
-                        return true;
+                        return m
                     }
                 })
             }
 
-       case "UPDATE_MODULE":
-                return {
-                    modules: state.modules.map(module => {
-                        if (module._id === action.moduleToUpdate._id) {
-                            return action.moduleToUpdate
-                        } else {
-                            return module
-                        }
-                    })
-                }
-            case "FIND_MODULE":
-                return state
-            default:
-                return state
-
+        default:
+            return state
     }
 }
 
-export default moduleReducer
+export default moduleReducer;
+
+
+
