@@ -1,4 +1,4 @@
-import {CREATE_TOPIC, DELETE_TOPIC, FIND_TOPICS_FOR_LESSON, UPDATE_TOPIC} from "../actions/topic-actions";
+import {CREATE_TOPIC, DELETE_TOPIC, FIND_TOPICS_FOR_LESSON, UPDATE_TOPIC} from "../components/actions/topic-actions";
 
 const initialState = {
     topics: []
@@ -22,10 +22,10 @@ const topicReducer = (state = initialState, action) => {
             }
 
         case DELETE_TOPIC:
-            const newState = {
+            const newState2 = {
                 topics: state.topics.filter(topic => topic._id !== action.item._id)
             }
-            return newState
+            return newState2
 
         case UPDATE_TOPIC:
             return {

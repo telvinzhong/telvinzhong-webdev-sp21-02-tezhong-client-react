@@ -1,4 +1,4 @@
-import {CREATE_LESSON, DELETE_LESSON, FIND_LESSONS_FOR_MODULE, UPDATE_LESSON} from "../actions/lesson-actions";
+import {CREATE_LESSON, DELETE_LESSON, FIND_LESSONS_FOR_MODULE, UPDATE_LESSON} from "../components/actions/lesson-actions";
 
 const initialState = {
     lessons: []
@@ -22,10 +22,10 @@ const lessonReducer = (state = initialState, action) => {
             }
 
         case DELETE_LESSON:
-            const newState = {
+            const newState2 = {
                 lessons: state.lessons.filter(lesson => lesson._id !== action.lessonToDelete._id)
             }
-            return newState
+            return newState2
 
         case UPDATE_LESSON:
             return {

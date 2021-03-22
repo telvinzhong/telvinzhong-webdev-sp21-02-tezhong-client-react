@@ -1,4 +1,4 @@
-import {CREATE_WIDGET, DELETE_WIDGET, FIND_WIDGETS_FOR_TOPIC, UPDATE_WIDGET} from "../actions/widget-actions";
+import {CREATE_WIDGET, DELETE_WIDGET, FIND_WIDGETS_FOR_TOPIC, UPDATE_WIDGET} from "../components/actions/widget-actions";
 
 const initialState = {
     widgets: []

@@ -4,7 +4,6 @@ import CourseGrid from "./course-grid/course-grid";
 import CourseEditor from "./course-editor/course-editor";
 import {Route} from "react-router-dom";
 import courseService from "../services/course-service";
-import './course.css';
 
 class CourseManager extends React.Component {
     state = {

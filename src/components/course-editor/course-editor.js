@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import {Link, useParams} from "react-router-dom";
-import moduleReducer from '../reducers/modules-reducers'
+import moduleReducer from '../../reducers/modules-reducers'
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
-import lessonReducer from "../reducers/lesson-reducer";
+import lessonReducer from "../../reducers/lesson-reducer";
 import TopicPill from "./topic-pills";
-import topicReducer from "../reducers/topic-reducer";
+import topicReducer from "../../reducers/topic-reducer";
 import courseService from "../../services/course-service";
 import WidgetList from "./widgets/widget-list";
-import widgetReducer from "../reducers/widget-reducer";
+import widgetReducer from "../../reducers/widget-reducer";
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
@@ -19,10 +19,9 @@ const reducer = combineReducers({
     widgetReducer: widgetReducer
 })
 
-// const store = createStore(moduleReducer);
+
 const store = createStore(reducer);
 
-// const CourseEditor = ({props}) =>
 const CourseEditor = ({history}) => {
     const {courseId, layout} = useParams();
     const [title, setNewTitle] = useState('')

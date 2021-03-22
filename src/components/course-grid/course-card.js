@@ -49,7 +49,7 @@ const CourseCard = (
                     and make up the bulk of the card's content
                     </p>
                     <div>
-                        <Link to={`/courses/editor/${course._id}`} className="btn btn-primary">
+                        <Link to={`/courses/grid/editor/${course._id}`} className="btn btn-primary">
                             {course.title}
                         </Link>
                     </div>
