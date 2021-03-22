@@ -2,19 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import CourseManager from "./components/course-manager";
 import {BrowserRouter, Route} from "react-router-dom";
-import Home from "./components/home"
+import home from "./components/home"
 
 function App() {
   return (
       <BrowserRouter>
-        <div className="container-fluid">
-            <Route path="/" exact={true}>
-                <Home/>
-            </Route>
-            <Route path="/courses">
-                <CourseManager/>
-            </Route>
-        </div>
+          <div>
+              <Route path="/" exact={true} component={home}/>
+              <Route path="/courses" component={CourseManager}/>
+          </div>
       </BrowserRouter>
   );
 }
