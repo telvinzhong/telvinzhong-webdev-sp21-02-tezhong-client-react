@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const EditableItem = (
     {
-        to,
+        to="/somewhere/to/go",
         item= {title: "Some Title", _id:"ABC"},
         deleteItem,
         updateItem,
@@ -19,7 +19,7 @@ const EditableItem = (
                 <>
                     <Link className={`nav-link ${active? 'active' : ''}`} to={to}>
                         {item.title}
-                        <i onClick={() => setEditing(true)} className="fas fa-edit btn btn-sm float-right"></i>
+                        <i onClick={() => setEditing(true)} className="fas fa-edit btn btn-sm float-right"/>
                     </Link>
 
                 </>
@@ -39,11 +39,11 @@ const EditableItem = (
                     <i onClick={() => {
                         setEditing(false)
                         updateItem(cachedItem)
-                    }} className="fas fa-check btn btn-sm float-right"></i>
+                    }} className="fas fa-check btn btn-sm float-right"/>
                     <i onClick={() => {
                         setEditing(false)
                         deleteItem(item)
-                    }} className="fas fa-times btn btn-sm float-right"></i>
+                    }} className="fas fa-times btn btn-sm float-right"/>
                 </>
             }
 
