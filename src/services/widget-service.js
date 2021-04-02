@@ -1,4 +1,6 @@
-const API_URL = "https://tezhong-5610-two.herokuapp.com/api";
+//const API_URL = "https://tezhong-5610-two.herokuapp.com/api";
+const API_URL = "http://localhost:8080/api";
+// Just for this assignment because no heroku server for database
 
 export const findAllWidgets = () =>
     fetch(`${API_URL}/widgets`)

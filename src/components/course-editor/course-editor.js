@@ -19,7 +19,6 @@ const reducer = combineReducers({
     widgetReducer: widgetReducer
 })
 
-
 const store = createStore(reducer);
 
 const CourseEditor = ({history}) => {

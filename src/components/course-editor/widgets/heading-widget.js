@@ -55,7 +55,7 @@ const HeadingWidget = (
                     <i onClick={() => {
                         updateWidget(cachedWidget.id, cachedWidget)
                         setWidget({})
-                    } }
+                    }}
                        className="fas fa-check btn btn-sm float-right"/>
 
                 </>
