@@ -46,11 +46,9 @@ const CourseEditor = ({history}) => {
                     <div className="col-9">
                         <LessonTabs/>
                         <TopicPill/>
-                        <br/>
                         <WidgetList/>
                     </div>
                 </div>
-
             </div>
         </Provider>
     )
