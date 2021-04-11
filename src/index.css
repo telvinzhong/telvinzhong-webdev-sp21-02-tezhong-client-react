@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.check-quiz {
+  padding-top: 7px;
+  right: 20px;
+  position: absolute;
+}
+
+.border-bottom {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.wrong {
+  color: #f94144;
+}
+
+.correct {
+  color: #43aa8b;
+}
