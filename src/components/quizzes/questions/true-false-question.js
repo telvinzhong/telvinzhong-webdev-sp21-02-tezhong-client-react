@@ -1,12 +1,9 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
+import {submitQuiz} from "../../../services/quiz-service";
 
-const TrueFalseQuestion = ({question}) => {
+const TrueFalseQuestion = ({question, highlight}) => {
     const [yourAnswer, setYourAnswer] = useState('')
-    const [highlight, setHighlight] = useState(false)
-    const _submit = () => {
-        setHighlight(true)
-    }
 
     return(
         <div>
@@ -27,7 +24,10 @@ const TrueFalseQuestion = ({question}) => {
                         ${ (question.correct === 'true') && highlight ? 'list-group-item-success' : ''}`}>
                     <label>
                         <input
-                            onClick={() => setYourAnswer('true')}
+                            onClick={() => {
+                                setYourAnswer('true')
+                                question.answer = 'true'
+                            }}
                             type="radio"
                             name={question._id}
                             disabled={highlight}
@@ -46,7 +46,10 @@ const TrueFalseQuestion = ({question}) => {
                         ${(yourAnswer !== question.correct) && (yourAnswer === 'false') && highlight? 'list-group-item-danger' : ''}
                         ${(question.correct === 'false') && highlight? 'list-group-item-success' : ''}`}>
                     <label>
-                        <input onClick={() => setYourAnswer('false')}
+                        <input onClick={() => {
+                            setYourAnswer('false')
+                            question.answer = 'false'
+                        }}
                                type="radio"
                                name={question._id}
                                disabled={highlight}
@@ -67,10 +70,10 @@ const TrueFalseQuestion = ({question}) => {
             <p>
                 Your answer: {yourAnswer}
             </p>
-            <Link to="#" className="btn btn-success"
-                  onClick={_submit}>
-                Grade
-            </Link>
+            {/*<Link to="#" className="btn btn-success"*/}
+            {/*      onClick={_submit}>*/}
+            {/*    Submit*/}
+            {/*</Link>*/}
         </div>
     )
 }
