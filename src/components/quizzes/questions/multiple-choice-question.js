@@ -4,7 +4,6 @@ import {submitQuiz} from "../../../services/quiz-service";
 
 const MultiChoiceQuestion = ({question, highlight}) => {
     const [yourAnswer, setYourAnswer] = useState('')
-
     return(
         <div>
             <h5>
@@ -54,7 +53,6 @@ const MultiChoiceQuestion = ({question, highlight}) => {
             </ul>
             <br/>
             <p>Your answer: {yourAnswer}</p>
-
         </div>
     )
 }

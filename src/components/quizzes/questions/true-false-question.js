@@ -70,10 +70,6 @@ const TrueFalseQuestion = ({question, highlight}) => {
             <p>
                 Your answer: {yourAnswer}
             </p>
-            {/*<Link to="#" className="btn btn-success"*/}
-            {/*      onClick={_submit}>*/}
-            {/*    Submit*/}
-            {/*</Link>*/}
         </div>
     )
 }
