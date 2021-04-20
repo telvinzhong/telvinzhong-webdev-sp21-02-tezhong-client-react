@@ -52,6 +52,10 @@ const CourseCard = (
                         <Link to={`/courses/grid/editor/${course._id}`} className="btn btn-primary">
                             {course.title}
                         </Link>
+                    <br/>
+                    <div>
+                        <Link to={`/courses/${course._id}/quizzes`}>Quizzes</Link>
+                    </div>
                     </div>
                     <div className="float-right card-icons">
                         {
