@@ -5,7 +5,6 @@ export const findQuizzesForCourse = () =>
     fetch(QUIZ_URL)
         .then(response => response.json())
 
-
 export const findQuestionForQuiz = (quizId) =>
     fetch(`${QUIZ_URL}/${quizId}/questions`)
         .then(response => response.json())
